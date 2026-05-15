@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Investment value</th>
+      <th>Interest (Year)</th>
+      <th>Total Interest</th>
+      <th>Invested capital</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (round of annualData; track round.year) {
+      <tr>
+        <td>{{ round.year }}</td>
+        <td>{{ round.valueEndOfYear | currency }}</td>
+        <td>{{ round.interest | currency }}</td>
+        <td>{{ round.totalInterest | currency }}</td>
+        <td>{{ round.totalAmountInvested | currency }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
