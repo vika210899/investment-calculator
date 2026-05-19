@@ -14,7 +14,7 @@ import { AnnualData, UserInputData } from './user-input/user-input.module';
 export class App {
   protected readonly title = signal('investment-calculator');
 
-  annualDataValue?: AnnualData[];
+  annualDataValue = signal<AnnualData[] | undefined>(undefined);
   calculateInvestmentResults(userInput: UserInputData) {
     const annualData = [];
     let investmentValue = userInput.initialInvestment;
@@ -33,6 +33,6 @@ export class App {
         totalAmountInvested: userInput.initialInvestment + userInput.annualInvestment * year,
       });
     }
-    this.annualDataValue = annualData;
+    this.annualDataValue.set(annualData);
   }
 }

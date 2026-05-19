@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (round of annualData; track round.year) {
+    @for (round of annualData(); track round.year) {
       <tr>
         <td>{{ round.year }}</td>
         <td>{{ round.valueEndOfYear | currency }}</td>

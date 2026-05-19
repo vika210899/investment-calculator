@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { type AnnualData } from '../user-input/user-input.module';
 import { CurrencyPipe } from '@angular/common';
 
@@ -9,5 +9,5 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-results.scss',
 })
 export class InvestmentResults {
-  @Input({ required: true }) annualData!: AnnualData[];
+  annualData = input<AnnualData[]>();
 }
