@@ -1,28 +1,30 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UserInputData } from './user-input.module';
-import { InvestmentResults } from '../investment-results/investment-results';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-user-input',
-  imports: [FormsModule, InvestmentResults],
+  imports: [FormsModule],
   templateUrl: './user-input.html',
   styleUrl: './user-input.scss',
 })
 export class UserInput {
-  userInput = output<UserInputData>();
   initialInvestmentValue = signal('0');
   annualInvestmentValue = signal('0');
   expectedReturnValue = signal('5');
   durationValue = signal('10');
 
+  private investmentService = inject(InvestmentService);
+
   onUserInput() {
-    this.userInput.emit({
+    console.log('user-input open');
+    this.investmentService.calculateInvestmentResults({
       initialInvestment: +this.initialInvestmentValue(),
       annualInvestment: +this.annualInvestmentValue(),
       expectedReturn: +this.expectedReturnValue(),
       duration: +this.durationValue(),
     });
+
     this.initialInvestmentValue.set('0');
     this.annualInvestmentValue.set('0');
     this.expectedReturnValue.set('5');
