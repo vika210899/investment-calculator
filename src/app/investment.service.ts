@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import type { AnnualData, UserInputData } from './user-input/user-input.module';
+import type { AnnualData, UserInputData } from './user-input.model';
 
 @Injectable({ providedIn: 'root' })
 export class InvestmentService {

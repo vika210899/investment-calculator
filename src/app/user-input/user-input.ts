@@ -1,10 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-user-input',
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './user-input.html',
   styleUrl: './user-input.scss',
 })
@@ -17,7 +16,6 @@ export class UserInput {
   private investmentService = inject(InvestmentService);
 
   onUserInput() {
-    console.log('user-input open');
     this.investmentService.calculateInvestmentResults({
       initialInvestment: +this.initialInvestmentValue(),
       annualInvestment: +this.annualInvestmentValue(),
